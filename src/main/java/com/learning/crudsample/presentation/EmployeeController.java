@@ -2,9 +2,9 @@ package com.learning.crudsample.presentation;
 
 import com.learning.crudsample.domain.EmployeeService;
 import com.learning.crudsample.presentation.dto.EmployeeDTO;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.learning.crudsample.presentation.dto.EmployeeRequestDTO;
+import jakarta.validation.Valid;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -12,7 +12,7 @@ import java.util.List;
 @RequestMapping("/api/employees")
 public class EmployeeController {
 
-    private EmployeeService employeeService;
+    private final EmployeeService employeeService;
 
     public EmployeeController(EmployeeService employeeService) {
         this.employeeService = employeeService;
@@ -21,5 +21,15 @@ public class EmployeeController {
     @GetMapping
     public List<EmployeeDTO> getAllEmployees() {
         return employeeService.findAll();
+    }
+
+    @GetMapping("/{employeeCode}")
+    public EmployeeDTO getEmployeeByCode(@PathVariable("employeeCode") String employeeCode) {
+        return employeeService.findByEmployeeCode(employeeCode);
+    }
+
+    @PostMapping("/register")
+    public EmployeeDTO registerEmployee(@Valid @RequestBody EmployeeRequestDTO employeeRequestDTO) {
+        return employeeService.create(employeeRequestDTO);
     }
 }

@@ -1,10 +1,7 @@
 package com.learning.crudsample.infrastructure.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Entity
 @Table(name = "employee")
@@ -12,6 +9,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class Employee {
 
     @Id
@@ -27,4 +25,7 @@ public class Employee {
 
     @Column(name = "email")
     private String email;
+
+    @Column(name = "employee_code")
+    private String employeeCode;
 }
