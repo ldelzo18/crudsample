@@ -37,12 +37,12 @@ VALUES
 
 INSERT INTO `users`
 VALUES
-    ('ldelzo.e@gmail.com','$2a$12$Mtj59vtNkn528mK/x1YyoOIg1fwtHUUuVbWyEY2ed0mLM55m1li5O','Luis Delzo',1),
-    ('pepe_v@gmail.com','$2a$12$Mtj59vtNkn528mK/x1YyoOIg1fwtHUUuVbWyEY2ed0mLM55cm1li5O','Pepe Vazques',1);
+    ('testuserapi@test.com','$2a$12$Mtj59vtNkn528mK/x1YyoOIg1fwtHUUuVbWyEY2ed0mLM55m1li5O','Luis Delzo',1),
+    ('pepe_v@gmail.com','$2a$12$Mtj59vtNkn528mK/x1YyoOIg1fwtHUUuVbWyEY2ed0mLM55m1li5O','Pepe Vazques',1);
 
 INSERT INTO `roles`
 VALUES
-    ('ldelzo.e@gmail.com','EMPLOYEE'),
-    ('ldelzo.e@gmail.com','ADMIN'),
+    ('testuserapi@test.com','EMPLOYEE'),
+    ('testuserapi@test.com','ADMIN'),
     ('pepe_v@gmail.com','MANAGER'),
     ('pepe_v@gmail.com','EMPLOYEE');

@@ -54,7 +54,7 @@ Now you can run and consume my test endpoints using Postman or any other API cli
 1. Access to http://localhost:8080/swaggerdoc.html
 2. Execute POST request to generate a token by using the credentials:
    - email: testuserapi@test.com
-   - password: Password123
+   - password: Password123  
     This will return a token which you can use to access the other endpoints.
 
 3. Try out the following endpoints:
