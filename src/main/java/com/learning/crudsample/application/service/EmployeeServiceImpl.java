@@ -1,16 +1,12 @@
-package com.learning.crudsample.domain.impl;
+package com.learning.crudsample.application.service;
 
-import com.learning.crudsample.domain.EmployeeService;
-import com.learning.crudsample.infrastructure.dao.EmployeeRepository;
+import com.learning.crudsample.infrastructure.repository.EmployeeRepository;
 import com.learning.crudsample.infrastructure.entity.Employee;
 import com.learning.crudsample.presentation.dto.EmployeeDTO;
 import com.learning.crudsample.presentation.dto.EmployeeRequestDTO;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
-
-import java.beans.Transient;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class EmployeeServiceImpl implements EmployeeService {

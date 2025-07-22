@@ -1,6 +1,6 @@
 package com.learning.crudsample.presentation;
 
-import com.learning.crudsample.domain.EmployeeService;
+import com.learning.crudsample.application.service.EmployeeService;
 import com.learning.crudsample.presentation.dto.EmployeeDTO;
 import com.learning.crudsample.presentation.dto.EmployeeRequestDTO;
 import jakarta.validation.Valid;
