@@ -45,5 +45,4 @@ INSERT INTO `roles`
 VALUES
     ('testUserD@gmail.com','EMPLOYEE'),
     ('testUserD@gmail.com','ADMIN'),
-    ('pepe_v@gmail.com','MANAGER'),
     ('pepe_v@gmail.com','EMPLOYEE');

@@ -22,7 +22,7 @@ This project demonstrates:
 - Intellij IDEA Ultimate Edition 2025
 
 ## 🔧 Future Improvements
-- Add PUT, PATCH and DELETE endpoints for Employee entities. (Coming soon...)
+- Add PUT, PATCH and DELETE endpoints for Employee entities. (✔️Done Partially, PATCH not yet)
 - Add unit tests for all services and controllers.
 - Add integration tests for the entire application.
 - Add a Dockerfile to containerize the application. (✔️Done)
@@ -35,6 +35,21 @@ This project demonstrates:
 - employee table: stores employee data such as first name, last name, email and its code in the company.  
 - users: stores user credentials for authentication.  
 - roles: stores user roles for authorization.
+
+## 🗄️ Users and Roles
+
+|  Email             | Password     | Enabled | Roles assigned |
+|--------------------|--------------|---------|---------------|
+| testUserD@gmail.com | Password123 | 1       |EMPLOYEE, ADMIN|
+|pepe_v@gmail.com | Password123 | 1       |EMPLOYEE|
+
+| Endpoint | EMPLOYEE | MANAGER | ADMIN |
+|----------|----------|---------|-------|
+| GET /api/v1/employees | ✔️       | ✔️       | ✔️     |
+| GET /api/v1/employees/{id} | ✔️       | ✔️       | ✔️     |
+| POST /api/v1/employees | ❌        | ✔️       | ✔️     |
+| PUT /api/v1/employees/update | ❌        | ✔️       | ✔️     |
+| DELETE /api/v1/employees/{id} | ❌        | ✔️       | ✔️     |
 
 ## 🚀 How to run this project locally
 Install JDK17 (you can use your IDE built-in JDK), then also install Docker and Docker Compose if you want to run the MySQL database in a container.
@@ -52,8 +67,8 @@ Now you can run and consume my test endpoints using Postman or any other API cli
 ## 🌐 Postman collection and endpoints
 
 1. Access to http://localhost:8080/swaggerdoc.html
-2. Execute POST request to generate a token by using the credentials:
-   - email: testuserapi@test.com
+2. Execute POST auth request to generate a token by using the credentials:
+   - email: testUserD@gmail.com
    - password: Password123  
     This will return a token which you can use to access the other endpoints.
 
@@ -61,5 +76,7 @@ Now you can run and consume my test endpoints using Postman or any other API cli
    - GET /api/v1/employees: Get all employees.
    - GET /api/v1/employees/{id}: Get employee by ID.
    - POST /api/v1/employees: Create a new employee.
+   - PUT /api/v1/employees/update: Update an existing employee.
+   - DELETE /api/v1/employees/{id}: Delete an employee by ID.
 
 4. Enjoy!
