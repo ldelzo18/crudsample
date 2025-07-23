@@ -1,9 +1,12 @@
 package com.learning.crudsample.presentation.dto;
 
-import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 
-public record EmployeeRequestDTO(
+public record EmployeeUpdateRequestDTO(
+        @NotBlank(message = "employeeCode is required")
+        String employeeCode,
+
         @NotBlank(message = "firstName is required")
         String firstName,
 

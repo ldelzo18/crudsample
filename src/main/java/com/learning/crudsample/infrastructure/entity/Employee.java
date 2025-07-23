@@ -17,15 +17,15 @@ public class Employee {
     @Column(name = "id")
     private int id;
 
-    @Column(name = "first_name")
+    @Column(name = "first_name", nullable = false)
     private String firstName;
 
-    @Column(name = "last_name")
+    @Column(name = "last_name", nullable = false)
     private String lastName;
 
-    @Column(name = "email")
+    @Column(name = "email", nullable = false)
     private String email;
 
-    @Column(name = "employee_code")
+    @Column(name = "employee_code", nullable = false, unique = true)
     private String employeeCode;
 }

@@ -4,12 +4,13 @@ USE employee_directory;
 
 -- Step 1: Create tables in DB
 CREATE TABLE `employee` (
-                            `id` int NOT NULL AUTO_INCREMENT,
-                            `first_name` varchar(45) DEFAULT NULL,
-                            `last_name` varchar(45) DEFAULT NULL,
-                            `email` varchar(45) DEFAULT NULL,
-                            `employee_code` varchar(20) DEFAULT NULL,
-                            PRIMARY KEY (`id`)
+                        `id` int NOT NULL AUTO_INCREMENT,
+                        `first_name` varchar(45) NOT NULL,
+                        `last_name` varchar(45) NOT NULL,
+                        `email` varchar(45) NOT NULL,
+                        `employee_code` varchar(20) NOT NULL,
+                        PRIMARY KEY (`id`),
+                        UNIQUE KEY `uq_employee_code` (`employee_code`)
 ) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 
 CREATE TABLE `users` (
@@ -37,12 +38,12 @@ VALUES
 
 INSERT INTO `users`
 VALUES
-    ('testuserapi@test.com','$2a$12$Mtj59vtNkn528mK/x1YyoOIg1fwtHUUuVbWyEY2ed0mLM55m1li5O','Luis Delzo',1),
+    ('testUserD@gmail.com','$2a$12$Mtj59vtNkn528mK/x1YyoOIg1fwtHUUuVbWyEY2ed0mLM55m1li5O','Test User',1),
     ('pepe_v@gmail.com','$2a$12$Mtj59vtNkn528mK/x1YyoOIg1fwtHUUuVbWyEY2ed0mLM55m1li5O','Pepe Vazques',1);
 
 INSERT INTO `roles`
 VALUES
-    ('testuserapi@test.com','EMPLOYEE'),
-    ('testuserapi@test.com','ADMIN'),
+    ('testUserD@gmail.com','EMPLOYEE'),
+    ('testUserD@gmail.com','ADMIN'),
     ('pepe_v@gmail.com','MANAGER'),
     ('pepe_v@gmail.com','EMPLOYEE');

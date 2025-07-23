@@ -14,11 +14,11 @@ import lombok.*;
 public class Role {
 
     @Id
-    @Column(name = "email", length = 50)
+    @Column(name = "email", nullable = false)
     private String email;
 
     @Id
-    @Column(name = "role", length = 50)
+    @Column(name = "role", nullable = false)
     private String role;
 
     @ManyToOne

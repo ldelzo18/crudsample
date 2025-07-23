@@ -22,15 +22,14 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests(configurer ->
                         configurer
-                                .requestMatchers(HttpMethod.GET, "/api/employees").hasRole("EMPLOYEE")
-                                .requestMatchers(HttpMethod.GET, "/api/employees/**").hasRole("EMPLOYEE")
-                                .requestMatchers(HttpMethod.DELETE, "/api/employees/**").hasRole("ADMIN")
-                                .requestMatchers(HttpMethod.PATCH, "/api/employees/**").hasRole("MANAGER")
-                                .requestMatchers(HttpMethod.PUT, "/api/employees").hasRole("MANAGER")
-                                .requestMatchers(HttpMethod.POST, "/api/employees/**").hasRole("MANAGER")
-                                .requestMatchers(HttpMethod.POST, "/api/employees/**").hasRole("ADMIN")
-                                .requestMatchers("/swagger-ui/**", "/v3/api-docs/**", "/swagger-ui.html","/swaggerdoc.html").permitAll()
-                                .requestMatchers(HttpMethod.POST, "/api/auth/**").permitAll()
+                                .requestMatchers(HttpMethod.GET, "/api/employees").hasAnyRole("EMPLOYEE", "MANAGER", "ADMIN")
+                                .requestMatchers(HttpMethod.GET, "/api/employees/**").hasAnyRole("EMPLOYEE", "MANAGER", "ADMIN")
+                                .requestMatchers(HttpMethod.DELETE, "/api/employees/**").hasAnyRole("MANAGER", "ADMIN")
+                                .requestMatchers(HttpMethod.PATCH, "/api/employees/**").hasAnyRole("MANAGER", "ADMIN")
+                                .requestMatchers(HttpMethod.PUT, "/api/employees").hasAnyRole("MANAGER", "ADMIN")
+                                .requestMatchers(HttpMethod.POST, "/api/employees/**").hasAnyRole("MANAGER", "ADMIN")
+                                .requestMatchers("/swagger-ui/**", "/v3/api-docs/**", "/swagger-ui.html", "/swaggerdoc.html").permitAll()
+                                .requestMatchers("/api/auth/**").permitAll()
                                 .anyRequest().authenticated()
                 ).addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)
                 .csrf(csrf -> csrf.disable());

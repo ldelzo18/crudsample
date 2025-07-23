@@ -4,9 +4,13 @@ import com.learning.crudsample.infrastructure.repository.EmployeeRepository;
 import com.learning.crudsample.infrastructure.entity.Employee;
 import com.learning.crudsample.presentation.dto.EmployeeDTO;
 import com.learning.crudsample.presentation.dto.EmployeeRequestDTO;
+import com.learning.crudsample.presentation.dto.EmployeeUpdateRequestDTO;
+import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
@@ -60,6 +64,38 @@ public class EmployeeServiceImpl implements EmployeeService {
                 saved.getEmail(),
                 saved.getEmployeeCode()
         );
+    }
+
+    @Override
+    @Transactional
+    public void deleteByEmployeeCode(String employeeCode) {
+        if (!employeeRepository.existsByEmployeeCode(employeeCode)) {
+            throw new EntityNotFoundException("Employee with code " + employeeCode + " not found!");
+        }
+        employeeRepository.deleteByEmployeeCode(employeeCode);
+    }
+
+    @Override
+    @Transactional
+    public EmployeeDTO update(EmployeeUpdateRequestDTO employeeUpdateRequestDTO) {
+        Optional<Employee> optEmployee = employeeRepository.findByEmployeeCode(employeeUpdateRequestDTO.employeeCode());
+
+        if (optEmployee.isEmpty()) {
+            throw new EntityNotFoundException("Employee with code " + employeeUpdateRequestDTO.employeeCode() + " not found!");
+        }
+
+        Employee employee = optEmployee.get();
+        employee.setFirstName(employeeUpdateRequestDTO.firstName());
+        employee.setLastName(employeeUpdateRequestDTO.lastName());
+        employee.setEmail(employeeUpdateRequestDTO.email());
+
+        Employee updatedEmployee = employeeRepository.save(employee);
+        return new EmployeeDTO(
+                updatedEmployee.getFirstName(),
+                updatedEmployee.getLastName(),
+                updatedEmployee.getEmail(),
+                updatedEmployee.getEmployeeCode(
+                ));
     }
 
 }
